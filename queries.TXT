@@ -1,0 +1,38 @@
+query GetProducts {
+    products {
+        ...ProductFragment
+    }
+}
+
+query GetProduct {
+    getProduct(id: 3) {
+        ...ProductFragment
+    }
+}
+
+mutation AddProduct {
+    addProduct(product: { name: "laptop", description: "whatever", price: 99.99 }) {
+        ...ProductFragment
+    }
+}
+
+mutation UpdateProduct {
+    updateProduct(id: 3, productUpdateDTO: { price: 84.99 }) {
+        ...ProductFragment
+    }
+}
+
+mutation DeleteProduct {
+    deleteProduct(id: 4) {
+        __typename
+    }
+}
+
+
+
+fragment ProductFragment on Product {
+    id
+    name
+    description
+    price
+}
